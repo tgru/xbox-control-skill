@@ -12,8 +12,8 @@ class XboxControl(MycroftSkill):
         self.xbox_addr      = self.settings.get('xbox_addr')
         self.xbox_live_id   = self.settings.get('xbox_live_id')
 
-    @intent_handler(IntentBuilder('').require('device').require('switch.state').require('state.on'))
-    def handle_control_xbox(self, message):
+    @intent_handler(IntentBuilder('').require('switch.state').require('state.on').require('device'))
+    def handle_power_on_xbox(self, message):
         self.power_on()
 
     def _url(self, path):
