@@ -3,35 +3,40 @@
     "skillMetadata": {
         "sections": [
             {
-                "name": "Options << Name of section",
+                "name": "XBox Device",
                 "fields": [
                     {
-                        "name": "internal_python_variable_name",
+                        "name": "xbox_addr",
                         "type": "text",
-                        "label": "Setting Friendly Display Name",
+                        "label": "IP Address",
                         "value": "",
-                        "placeholder": "demo prompt in the input box"
+                        "placeholder": ""
+                    },
+                    {
+                        "name": "xbox_live_id",
+                        "type": "text",
+                        "label": "XBox Live Device ID",
+                        "value": "",
+                        "placeholder": ""
                     }
                 ]
             },
             {
-                "name": "Login << Name of another section",
+                "name": "OpenXbox REST Server",
                 "fields": [
                     {
-                        "type": "label",
-                        "label": "Just a little bit of extra info for the user to understand following settings"
-                    },
-                    {
-                        "name": "username",
+                        "name": "api_addr",
                         "type": "text",
-                        "label": "Username",
-                        "value": ""
+                        "label": "URL",
+                        "value": "",
+                        "placeholder": ""
                     },
                     {
-                        "name": "password",
-                        "type": "password",
-                        "label": "Password",
-                        "value": ""
+                        "name": "api_port",
+                        "type": "number",
+                        "label": "Port",
+                        "value": "",
+                        "placeholder": ""
                     }
                 ]
             }
