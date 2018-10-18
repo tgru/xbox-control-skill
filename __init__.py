@@ -20,8 +20,11 @@ class XboxControl(MycroftSkill):
         return self.api_addr + ':' + str(self.api_port) + path   
 
     def power_on(self):
-        self.speak_dialog('not.implemented.yet')
-
+        ret = requests.get(
+            self._url(
+                "/device/{}/poweron".format(self.xbox_live_id)
+            )
+        )
 
 def create_skill():
     return XboxControl()
