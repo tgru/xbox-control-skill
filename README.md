@@ -20,3 +20,7 @@ Apart from this, a normal skill installation by cloning this repository can be d
 ## Credits
 
 @tgru
+
+## Disclaimer
+
+Xbox, Xbox One, Smartglass and Xbox Live are trademarks of Microsoft Corporation. This project is in no way endorsed by or affiliated with Microsoft Corporation, or any associated subsidiaries, logos or trademarks.
