@@ -2,6 +2,7 @@ from adapt.intent import IntentBuilder
 from mycroft import MycroftSkill, intent_handler
 
 import requests
+import json
 
 class XboxControl(MycroftSkill):
     def __init__(self):
@@ -16,6 +17,11 @@ class XboxControl(MycroftSkill):
     def handle_power_on_xbox(self, message):
         self.power_on()
 
+    @intent_handler(IntentBuilder('').require('switch.state').require('state.off').require('device'))
+    def handle_power_off_xbox(self, message):
+        self.power_off()
+        #self.is_connected()
+
     def _url(self, path):
         return self.api_addr + ':' + str(self.api_port) + path   
 
@@ -23,6 +29,25 @@ class XboxControl(MycroftSkill):
         ret = requests.get(
             self._url(
                 "/device/{}/poweron".format(self.xbox_live_id)
+            )
+        )
+
+    def connect(self):
+        ret = requests.get(
+            self._url( "/device")
+        )
+
+        ret = requests.get(
+            self._url(
+                "/device/{}/connect".format(self.xbox_live_id)
+            )
+        )
+
+    def power_off(self):
+        self.connect()
+        ret = requests.get(
+            self._url(
+                "/device/{}/poweroff".format(self.xbox_live_id)
             )
         )
 
