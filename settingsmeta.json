@@ -28,14 +28,14 @@
                         "name": "api_addr",
                         "type": "text",
                         "label": "URL",
-                        "value": "",
+                        "value": "http://localhost",
                         "placeholder": ""
                     },
                     {
                         "name": "api_port",
                         "type": "number",
                         "label": "Port",
-                        "value": "",
+                        "value": "5557",
                         "placeholder": ""
                     }
                 ]
