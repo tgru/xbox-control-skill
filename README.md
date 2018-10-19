@@ -1,15 +1,22 @@
 ## Xbox Control
-Lets you control your xbox one by voice.
+
+Lets you control your Xbox One by voice.
 
 ## Description
 
+This is a skill for the Mycroft AI voice assistant, which enables you to control your Xbox One with voice commands.
+
+## Installation
+
+At the moment this skill requires an [Xbox Smartglass REST server](https://github.com/OpenXbox/xbox-smartglass-rest-python) from OpenXbox running somewhere. In case the server is not running on the same device the URL and port of this server can be configured in the skill settings, since the default setting is `localhost:5557`.
+
+Apart from this, a normal skill installation by cloning this repository can be done.
 
 ## Examples
- - "Turn on the xbox"
- - "Power off the xbox"
 
+ - "Turn on the Xbox"
+ - "Power off the Xbox"
 
 ## Credits
+
 @tgru
-
-
