@@ -14,8 +14,8 @@ Apart from this, a normal skill installation by cloning this repository can be d
 
 ## Examples
 
- - "Turn on the Xbox"
- - "Power off the Xbox"
+ - "Power on the Xbox"
+ - "Switch the Xbox off"
 
 ## Credits
 
