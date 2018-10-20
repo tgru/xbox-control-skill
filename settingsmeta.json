@@ -1,9 +1,9 @@
 {
-    "name": "Xbox control",
+    "name": "Xbox Control",
     "skillMetadata": {
         "sections": [
             {
-                "name": "XBox Device",
+                "name": "Xbox Device",
                 "fields": [
                     {
                         "name": "xbox_addr",
@@ -15,7 +15,7 @@
                     {
                         "name": "xbox_live_id",
                         "type": "text",
-                        "label": "XBox Live Device ID",
+                        "label": "Xbox Live Device ID",
                         "value": "",
                         "placeholder": ""
                     }
