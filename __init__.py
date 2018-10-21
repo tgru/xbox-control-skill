@@ -36,6 +36,13 @@ class XboxControl(MycroftSkill):
             self.log.exception(e)
             self.speak_dialog('failed')
 
+    @intent_handler(IntentBuilder('').require('device').require('pause'))
+    def handle_pause(self, message):
+        try:
+            self.pause()
+        except requests.exceptions.RequestException as e:
+            self.log.exception(e)
+            self.speak_dialog('failed')
 
     def _url(self, path):
         return self.api_addr + ':' + str(self.api_port) + path   
@@ -71,6 +78,14 @@ class XboxControl(MycroftSkill):
         ret = requests.get(
             self._url(
                 "/device/{}/media/play".format(self.xbox_live_id)
+            )
+        )
+
+    def pause(self):
+        self.connect()
+        ret = requests.get(
+            self._url(
+                "/device/{}/media/pause".format(self.xbox_live_id)
             )
         )
 
