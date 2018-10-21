@@ -28,6 +28,15 @@ class XboxControl(MycroftSkill):
             self.log.exception(e)
             self.speak_dialog('failed.to.power.off')
 
+    @intent_handler(IntentBuilder('').require('device').require('play'))
+    def handle_play(self, message):
+        try:
+            self.play()
+        except requests.exceptions.RequestException as e:
+            self.log.exception(e)
+            self.speak_dialog('failed')
+
+
     def _url(self, path):
         return self.api_addr + ':' + str(self.api_port) + path   
 
@@ -54,6 +63,14 @@ class XboxControl(MycroftSkill):
         ret = requests.get(
             self._url(
                 "/device/{}/poweroff".format(self.xbox_live_id)
+            )
+        )
+
+    def play(self):
+        self.connect()
+        ret = requests.get(
+            self._url(
+                "/device/{}/media/play".format(self.xbox_live_id)
             )
         )
 
