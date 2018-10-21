@@ -28,7 +28,7 @@ class XboxControl(MycroftSkill):
             self.log.exception(e)
             self.speak_dialog('failed.to.power.off')
 
-    @intent_handler(IntentBuilder('').require('device').require('play'))
+    @intent_handler(IntentBuilder('').require('device').require('play').require('track'))
     def handle_play(self, message):
         try:
             self.play()
