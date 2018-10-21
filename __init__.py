@@ -60,6 +60,14 @@ class XboxControl(MycroftSkill):
             self.log.exception(e)
             self.speak_dialog('failed')
 
+    @intent_handler(IntentBuilder('').require('device').require('previous').require('track'))
+    def handle_prev_track(self, message):
+        try:
+            self.prev_track()
+        except requests.exceptions.RequestException as e:
+            self.log.exception(e)
+            self.speak_dialog('failed')
+
     def _url(self, path):
         return self.api_addr + ':' + str(self.api_port) + path   
 
@@ -118,6 +126,14 @@ class XboxControl(MycroftSkill):
         ret = requests.get(
             self._url(
                 "/device/{}/media/next_track".format(self.xbox_live_id)
+            )
+        )
+
+    def prev_track(self):
+        self.connect()
+        ret = requests.get(
+            self._url(
+                "/device/{}/media/prev_track".format(self.xbox_live_id)
             )
         )
 
