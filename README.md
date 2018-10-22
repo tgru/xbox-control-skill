@@ -17,6 +17,25 @@ Apart from this, a normal skill installation by cloning this repository can be d
  - "Power on the Xbox"
  - "Switch the Xbox off"
 
+## Features
+
+### Power
+
+| Function  | Example             |
+|-----------|---------------------|
+| Power On  | Turn on the Xbox    |
+| Power off | Switch the Xbox off |
+
+### Media Control
+
+| Function | Example                        |
+|----------|--------------------------------|
+| Play     | Play music on the Xbox         |
+| Pause    | Pause the song on the Xbox     |
+| Stop     | Stop Xbox media                |
+| Next     | Skip the track on the Xbox     |
+| Previous | Play the last song on the Xbox |
+
 ## Credits
 
 @tgru
