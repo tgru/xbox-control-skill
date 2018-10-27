@@ -81,7 +81,6 @@ class XboxControl(MycroftSkill):
             self.speak_dialog('found.one.xbox')
             self.settings['xbox_addr'] = devices[0]['ip']
             self.settings['xbox_live_id'] = devices[0]['liveid']
-            self.speak(devices[0]['ip']+devices[0]['liveid'])
         else:
             self.speak_dialog('found.multiple.xbox')
 
