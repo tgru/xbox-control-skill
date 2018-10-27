@@ -1,6 +1,8 @@
 from adapt.intent import IntentBuilder
 from mycroft import MycroftSkill, intent_handler
 
+from netdisco.smartglass import XboxSmartGlass
+
 import requests
 
 class XboxControl(MycroftSkill):
@@ -67,6 +69,22 @@ class XboxControl(MycroftSkill):
         except requests.exceptions.RequestException as e:
             self.log.exception(e)
             self.speak_dialog('failed')
+
+    @intent_handler(IntentBuilder('').require('device').require('find'))
+    def handle_find_xbox(self, message):
+        self.speak_dialog('find.xbox')
+        devices = self.find_xbox()
+
+        if len(devices) == 0:
+            self.speak_dialog('found.no.xbox')
+        elif len(devices) == 1:
+            self.speak_dialog('found.one.xbox')
+            self.settings['xbox_addr'] = devices[0]['ip']
+            self.settings['xbox_live_id'] = devices[0]['liveid']
+            self.speak(devices[0]['ip']+devices[0]['liveid'])
+        else:
+            self.speak_dialog('found.multiple.xbox')
+
 
     def _url(self, path):
         return self.api_addr + ':' + str(self.api_port) + path   
@@ -137,6 +155,22 @@ class XboxControl(MycroftSkill):
             )
         )
 
+    def find_xbox(self):
+        netdis = XboxSmartGlass()
+        netdis.update()
+
+        # Only propagate xbox one devices
+        entries = list(filter( lambda entry: entry[1]['device_type'] == 1, netdis.entries))
+
+        xbox_list = []
+
+        for entry in entries:
+            ip = entry[0]
+            ret = requests.get("http://localhost:5557/device?addr={}".format(ip))
+            for device in ret.json()['devices']:
+                xbox_list.append(dict([('ip', ip), ('liveid', device)]))
+
+        return xbox_list
+
 def create_skill():
     return XboxControl()
-

@@ -6,11 +6,17 @@ Lets you control your Xbox One by voice.
 
 This is a skill for the Mycroft AI voice assistant, which enables you to control your Xbox One with voice commands.
 
-## Installation
+## Setup
+
+### Installation
 
 At the moment this skill requires an [Xbox Smartglass REST server](https://github.com/OpenXbox/xbox-smartglass-rest-python) from OpenXbox running somewhere. In case the server is not running on the same device the URL and port of this server can be configured in the skill settings, since the default setting is `localhost:5557`.
 
 Apart from this, a normal skill installation by cloning this repository can be done.
+
+### Configuration
+
+On first startup the skill will scan your network for Xbox One devices and will add it automatically if found one. In case the skill does not find any Xbox or multiple ones, the IP address and Live ID of your device must be added manually in the skill settings, which are accesible through [home.mycroft.ai](home.mycroft.ai).
 
 ## Examples
 
@@ -35,6 +41,12 @@ Apart from this, a normal skill installation by cloning this repository can be d
 | Stop     | Stop Xbox media                |
 | Next     | Skip the track on the Xbox     |
 | Previous | Play the last song on the Xbox |
+
+### Miscellaneous
+
+| Function       | Example                            |
+|----------------|------------------------------------|
+| Auto Detection | Find my Xbox                       |
 
 ## Credits
 
