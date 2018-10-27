@@ -78,12 +78,12 @@ class XboxControl(MycroftSkill):
         if len(devices) == 0:
             self.speak_dialog('found.no.xbox')
         elif len(devices) == 1:
+            self.speak(devices[0])
             self.speak_dialog('found.one.xbox')
             self.settings['xbox_addr'] = devices[0]['ip']
             self.settings['xbox_live_id'] = devices[0]['liveid']
         else:
             self.speak_dialog('found.multiple.xbox')
-
 
     def _url(self, path):
         return self.api_addr + ':' + str(self.api_port) + path   
@@ -165,9 +165,17 @@ class XboxControl(MycroftSkill):
 
         for entry in entries:
             ip = entry[0]
-            ret = requests.get("http://localhost:5557/device?addr={}".format(ip))
-            for device in ret.json()['devices']:
-                xbox_list.append(dict([('ip', ip), ('liveid', device)]))
+
+            if len(ip) == 0:
+                continue
+
+            ret = requests.get(self._url("/device?addr={}".format(ip)))
+            liveid = next(iter(ret.json()['devices']))
+
+            if len(liveid) == 0:
+                continue
+
+            xbox_list.append(dict([('ip', ip), ('liveid', liveid)]))
 
         return xbox_list
 
