@@ -73,7 +73,11 @@ class XboxControl(MycroftSkill):
     @intent_handler(IntentBuilder('').require('device').require('find'))
     def handle_find_xbox(self, message):
         self.speak_dialog('find.xbox')
-        devices = self.find_xbox()
+        try:
+            devices = self.find_xbox()
+        except Exception as e:
+            self.log.exception(e)
+            self.speak_dialog('failed')
 
         if len(devices) == 0:
             self.speak_dialog('found.no.xbox')
