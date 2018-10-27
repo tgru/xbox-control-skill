@@ -16,7 +16,7 @@ Apart from this, a normal skill installation by cloning this repository can be d
 
 ### Configuration
 
-On first startup the skill will scan your network for Xbox One devices and will add it automatically if found one. In case the skill does not find any Xbox or multiple ones, the IP address and Live ID of your device must be added manually in the skill settings, which are accesible through [home.mycroft.ai](home.mycroft.ai).
+On first startup the skill can scan your network for Xbox One devices if you ask Mycroft to do this (**Find my Xbox**) and will add it automatically if found one. In case the skill does not find any Xbox or multiple ones, the IP address and Live ID of your device must be added manually in the skill settings, which are accesible through [home.mycroft.ai](home.mycroft.ai).
 
 ## Examples
 
